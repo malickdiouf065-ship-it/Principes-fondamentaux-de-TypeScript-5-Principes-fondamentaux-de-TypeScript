@@ -1,0 +1,412 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devoir TypeScript | Vehicle & Car</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0f172a, #172554, #312e81);
+            color: white;
+            min-height: 100vh;
+            padding: 35px 15px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 35px 15px;
+        }
+
+        .icon {
+            font-size: 65px;
+            margin-bottom: 15px;
+        }
+
+        header h1 {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        header h1 span {
+            color: #60a5fa;
+        }
+
+        header p {
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        .student {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #ffffff15;
+            border: 1px solid #64748b;
+            border-radius: 30px;
+            color: #bfdbfe;
+        }
+
+        .card {
+            background: #ffffff;
+            color: #1e293b;
+            border-radius: 18px;
+            padding: 28px;
+            margin-bottom: 22px;
+            box-shadow: 0 15px 35px #00000025;
+        }
+
+        .card h2 {
+            color: #1d4ed8;
+            margin-bottom: 18px;
+            font-size: 22px;
+        }
+
+        .card p {
+            line-height: 1.8;
+            color: #475569;
+        }
+
+        .code {
+            background: #0f172a;
+            color: #93c5fd;
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+            margin-top: 15px;
+            line-height: 1.8;
+            font-size: 14px;
+        }
+
+        .car-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .info {
+            background: #eff6ff;
+            border-radius: 12px;
+            padding: 20px 10px;
+            text-align: center;
+        }
+
+        .info strong {
+            display: block;
+            color: #1d4ed8;
+            margin-bottom: 8px;
+        }
+
+        .info span {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .car-image {
+            text-align: center;
+            font-size: 85px;
+            padding: 15px;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            border: none;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px #2563eb55;
+        }
+
+        .console {
+            background: #020617;
+            color: #4ade80;
+            border-radius: 12px;
+            padding: 20px;
+            min-height: 100px;
+            font-family: monospace;
+            line-height: 2;
+            overflow-wrap: anywhere;
+        }
+
+        .success {
+            color: #4ade80;
+        }
+
+        footer {
+            text-align: center;
+            color: #94a3b8;
+            padding: 25px 10px;
+            line-height: 1.8;
+        }
+
+        @media(max-width: 600px) {
+            header h1 {
+                font-size: 27px;
+            }
+
+            .car-info {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <div class="icon">🚘</div>
+
+        <h1>TypeScript <span>Vehicle & Car</span></h1>
+
+        <p>
+            Exercice pratique : interfaces, classes,
+            constructeur et méthodes en TypeScript.
+        </p>
+
+        <div class="student">
+            Réalisé par : Serigne Malick Tall Diouf
+        </div>
+    </header>
+
+    <!-- PRESENTATION -->
+    <section class="card">
+        <h2>📚 1. Présentation du devoir</h2>
+
+        <p>
+            L'objectif de cet exercice est de créer une
+            interface Vehicle, puis une classe Car qui
+            implémente cette interface. Nous allons
+            ensuite créer une voiture et démarrer son moteur.
+        </p>
+    </section>
+
+    <!-- INTERFACE -->
+    <section class="card">
+        <h2>💻 2. Interface Vehicle</h2>
+
+        <p>
+            Une interface définit les propriétés et les
+            méthodes qu'une classe doit respecter.
+        </p>
+
+        <pre class="code"><code>interface Vehicle {
+    make: string;
+    model: string;
+    year: number;
+
+    start(): void;
+}</code></pre>
+    </section>
+
+    <!-- CLASS -->
+    <section class="card">
+        <h2>⚙️ 3. Classe Car</h2>
+
+        <p>
+            La classe Car implémente l'interface Vehicle.
+            Son constructeur initialise les trois propriétés
+            et sa méthode start() affiche un message.
+        </p>
+
+        <pre class="code"><code>class Car implements Vehicle {
+
+    make: string;
+    model: string;
+    year: number;
+
+    constructor(
+        make: string,
+        model: string,
+        year: number
+    ) {
+        this.make = make;
+        this.model = model;
+        this.year = year;
+    }
+
+    start(): void {
+        console.log("Moteur de la voiture démarré");
+    }
+}</code></pre>
+    </section>
+
+    <!-- INSTANCE -->
+    <section class="card">
+        <h2>🚗 4. Création d'une voiture</h2>
+
+        <p>
+            Nous créons une instance de Car avec la marque
+            Toyota, le modèle Corolla et l'année 2024.
+        </p>
+
+        <pre class="code"><code>const myCar = new Car(
+    "Toyota",
+    "Corolla",
+    2024
+);
+
+myCar.start();</code></pre>
+    </section>
+
+    <!-- DEMONSTRATION -->
+    <section class="card">
+        <h2>🏁 5. Démonstration interactive</h2>
+
+        <div class="car-image">🚙</div>
+
+        <div class="car-info">
+            <div class="info">
+                <strong>MARQUE</strong>
+                <span id="make">Toyota</span>
+            </div>
+
+            <div class="info">
+                <strong>MODÈLE</strong>
+                <span id="model">Corolla</span>
+            </div>
+
+            <div class="info">
+                <strong>ANNÉE</strong>
+                <span id="year">2024</span>
+            </div>
+        </div>
+
+        <button onclick="startCar()">
+            🔑 Démarrer le moteur
+        </button>
+
+        <h3 style="margin-bottom:12px;">Console de résultats :</h3>
+
+        <div class="console" id="console">
+            > En attente du démarrage...
+        </div>
+    </section>
+
+    <!-- JAVASCRIPT -->
+    <section class="card">
+        <h2>🔄 6. Code JavaScript compilé</h2>
+
+        <p>
+            Voici la version JavaScript équivalente au code
+            TypeScript. Elle permet d'exécuter la démonstration
+            directement dans le navigateur.
+        </p>
+
+        <pre class="code"><code>class Car {
+    constructor(make, model, year) {
+        this.make = make;
+        this.model = model;
+        this.year = year;
+    }
+
+    start() {
+        console.log(
+            "Moteur de la voiture démarré"
+        );
+    }
+}
+
+const myCar = new Car(
+    "Toyota",
+    "Corolla",
+    2024
+);
+
+myCar.start();</code></pre>
+    </section>
+
+    <!-- CONCLUSION -->
+    <section class="card">
+        <h2>✅ 7. Conclusion</h2>
+
+        <p>
+            Dans cet exercice, nous avons appris à utiliser
+            une interface TypeScript, à créer une classe,
+            à implémenter une interface, à utiliser un
+            constructeur et à appeler une méthode.
+        </p>
+
+        <p style="margin-top:12px;">
+            Le résultat attendu dans la console est :
+        </p>
+
+        <pre class="code"><code>Moteur de la voiture démarré</code></pre>
+
+        <p style="margin-top:15px; color:#16a34a; font-weight:bold;">
+            Exercice réalisé avec succès !
+        </p>
+    </section>
+
+    <footer>
+        <p>© 2026 - Devoir TypeScript</p>
+        <p>Serigne Malick Tall Diouf | Développement Web</p>
+    </footer>
+
+</div>
+
+<script>
+    // Classe JavaScript compilée depuis TypeScript
+    class Car {
+        constructor(make, model, year) {
+            this.make = make;
+            this.model = model;
+            this.year = year;
+        }
+
+        start() {
+            console.log("Moteur de la voiture démarré");
+
+            return "Moteur de la voiture démarré";
+        }
+    }
+
+    // Création de l'instance
+    const myCar = new Car("Toyota", "Corolla", 2024);
+
+    // Fonction pour démarrer la voiture
+    function startCar() {
+        const result = myCar.start();
+
+        document.getElementById("console").innerHTML =
+            '<span class="success">> ' + result + '</span>';
+
+        document.getElementById("console").innerHTML +=
+            '<br>> Marque : ' + myCar.make +
+            '<br>> Modèle : ' + myCar.model +
+            '<br>> Année : ' + myCar.year;
+
+    }
+</script>
+
+</body>
+</html>
